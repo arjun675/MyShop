@@ -1,0 +1,75 @@
+{% extends 'index.html' %}
+{% load static %}  
+{% block title %}
+<title>MyShop | Update Profile</title>
+{% endblock %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <h3 class="background text-light p-3 text-center">Update Profile Section</h3>
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          {% if User.pic %}
+          <img src={{User.pic.url}} class="w-100">
+          {% else %}
+          <img src="{% static 'images/noimage.png' %}" class="w-100">
+          {% endif %}
+        </div>
+
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">  
+            <form action="#" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" name="name" value="{{User.name}}">
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label">User Name</label>
+                    <input type="text" class="form-control" name="username" value="{{User.username}}">
+                </div>
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" name="email" value="{{User.email}}">
+                </div>  
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input type="text" class="form-control" name="phone" value="{{User.phone}}">
+                </div>  
+                
+                <div class="mb-3">
+                  <label for="password" class="form-label">Password</label>
+                  <input type="password" class="form-control" name="password" value="{{User.password}}">
+                </div>
+                <div class="mb-3">
+                  <label for="addressline1" class="form-label">addressline1</label>
+                  <input type="text" class="form-control" name="addressline1" value="{{User.addressline1}}">
+                </div>
+                <div class="mb-3">
+                  <label for="addressline2" class="form-label">addressline2</label>
+                  <input type="text" class="form-control" name="addressline2" value="{{User.addressline2}}">
+                </div>
+                <div class="mb-3">
+                  <label for="addressline3" class="form-label">addressline3</label>
+                  <input type="text" class="form-control" name="addressline3" value="{{User.addressline3}}">
+                </div>
+                <div class="mb-3">
+                  <label for="pin" class="form-label">pin</label>
+                  <input type="number" class="form-control" name="pin" value="{{User.pin}}">
+                </div>
+                <div class="mb-3">
+                  <label for="city" class="form-label">city</label>
+                  <input type="text" class="form-control" name="city" value="{{User.city}}">
+                </div>
+                <div class="mb-3">
+                  <label for="state" class="form-label">state</label>
+                  <input type="text" class="form-control" name="state" value="{{User.state}}">
+                </div>
+                <div class="mb-3">
+                  <label for="pic" class="form-label">Profile pic</label>
+                  <input type="file" class="form-control" name="pic" value={{User.pic}}>
+                </div>
+                <button type="submit" class="btn background text-light w-100">Update</button>
+              </form>
+        </div>    
+    </div>
+</div>
+{% endblock %}
